@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Carter | Personal Blog</title>
+    <meta name="description" content="Personal website and blog of Alex Carter, a software developer and designer.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Background elements -->
+        <div class="bg-gradient-1"></div>
+        <div class="bg-gradient-2"></div>
+        
+        <nav class="navbar">
+            <div class="logo">AC.</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="home" class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">Crafting <span class="text-gradient">Digital</span> Experiences.</h1>
+                    <p class="hero-subtitle">Hi, I'm Alex. I build modern, interactive, and beautiful web applications.</p>
+                    <div class="hero-actions">
+                        <a href="#blog" class="btn btn-primary">Read My Blog</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="hero-image-container">
+                    <img src="./assets/profile.png" alt="Alex Carter" class="profile-image">
+                    <div class="glass-card floating-card-1">
+                        <span class="icon">✨</span> Creative UI
+                    </div>
+                    <div class="glass-card floating-card-2">
+                        <span class="icon">⚡</span> Performance
+                    </div>
+                </div>
+            </section>
+
+            <section id="blog" class="blog-section">
+                <div class="section-header">
+                    <h2>Latest <span class="text-gradient">Writings</span></h2>
+                    <p>Thoughts on engineering, design, and life.</p>
+                </div>
+                
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <img src="./assets/blog_cover.png" alt="Blog cover">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="tag">Design</span>
+                                <span class="date">Oct 24, 2023</span>
+                            </div>
+                            <h3>The Power of Micro-Animations in Modern Web</h3>
+                            <p>Explore how subtle movements can drastically improve user experience and bring your interfaces to life.</p>
+                            <a href="#" class="read-more">Read Article →</a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <div class="placeholder-img bg-gradient-alt"></div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="tag">Engineering</span>
+                                <span class="date">Oct 12, 2023</span>
+                            </div>
+                            <h3>Architecting Scalable Frontend Applications</h3>
+                            <p>A deep dive into state management, module federation, and maintaining a clean architecture as your app grows.</p>
+                            <a href="#" class="read-more">Read Article →</a>
+                        </div>
+                    </article>
+                    
+                    <article class="blog-card">
+                        <div class="blog-image">
+                            <div class="placeholder-img bg-gradient-dark"></div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="tag">Productivity</span>
+                                <span class="date">Sep 28, 2023</span>
+                            </div>
+                            <h3>My Developer Workspace Setup</h3>
+                            <p>The tools, themes, and physical gear I use daily to maximize flow state and minimize distractions.</p>
+                            <a href="#" class="read-more">Read Article →</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="logo">AC.</div>
+                <p>&copy; 2024 Alex Carter. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
