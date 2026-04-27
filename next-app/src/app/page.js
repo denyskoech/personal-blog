@@ -1,66 +1,61 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from 'next/link';
+import { openDb } from '@/lib/db';
 
-export default function Home() {
+export default async function Home() {
+  const db = await openDb();
+  const posts = await db.all('SELECT * FROM posts ORDER BY id DESC LIMIT 3');
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <section id="home" className="hero">
+        <div className="hero-content">
+          <h1 className="hero-title">Crafting <span className="text-gradient">Digital</span> Experiences.</h1>
+          <p className="hero-subtitle">Hi, I'm Alex. I build modern, interactive, and beautiful web applications.</p>
+          <div className="hero-actions">
+            <Link href="/blog" className="btn btn-primary">Read My Blog</Link>
+            <Link href="/contact" className="btn btn-secondary">Get In Touch</Link>
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="hero-image-container">
+          <img src="/assets/profile.png" alt="Alex Carter" className="profile-image" />
+          <div className="glass-card floating-card-1">
+            <span className="icon">✨</span> Creative UI
+          </div>
+          <div className="glass-card floating-card-2">
+            <span className="icon">⚡</span> Performance
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section id="blog" className="blog-section">
+        <div className="section-header">
+          <h2>Latest <span className="text-gradient">Writings</span></h2>
+          <p>Thoughts on engineering, design, and life.</p>
+        </div>
+        
+        <div className="blog-grid">
+          {posts.map((post, index) => (
+            <article className="blog-card" key={post.id} style={{ opacity: 1, transform: 'translateY(0)' }}>
+              <div className="blog-image">
+                {post.imageUrl ? (
+                  <img src={post.imageUrl} alt={post.title} />
+                ) : (
+                  <div className={`placeholder-img ${index % 2 === 0 ? 'bg-gradient-alt' : 'bg-gradient-dark'}`}></div>
+                )}
+              </div>
+              <div className="blog-content">
+                <div className="blog-meta">
+                  <span className="tag">{post.tag || 'General'}</span>
+                  <span className="date">{post.date}</span>
+                </div>
+                <h3>{post.title}</h3>
+                <p>{post.content.substring(0, 100)}...</p>
+                <Link href={`/blog/${post.id}`} className="read-more">Read Article →</Link>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
