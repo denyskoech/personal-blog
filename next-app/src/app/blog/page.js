@@ -2,8 +2,9 @@ import { openDb } from '@/lib/db';
 import Link from 'next/link';
 
 export default async function BlogPage({ searchParams }) {
+  const resolvedSearchParams = await searchParams;
   const db = await openDb();
-  const query = searchParams?.q || '';
+  const query = resolvedSearchParams?.q || '';
   
   let posts = [];
   if (query) {
@@ -37,19 +38,21 @@ export default async function BlogPage({ searchParams }) {
         <div className="blog-grid">
           {posts.map((post, index) => (
             <article className="blog-card" key={post.id}>
-              <div className="blog-image">
+              <Link href={`/blog/${post.id}`} className="blog-image" style={{ display: 'block' }}>
                 {post.imageUrl ? (
                   <img src={post.imageUrl} alt={post.title} />
                 ) : (
                   <div className={`placeholder-img ${index % 2 === 0 ? 'bg-gradient-alt' : 'bg-gradient-dark'}`}></div>
                 )}
-              </div>
+              </Link>
               <div className="blog-content">
                 <div className="blog-meta">
                   <span className="tag">{post.tag || 'General'}</span>
                   <span className="date">{post.date}</span>
                 </div>
-                <h3>{post.title}</h3>
+                <Link href={`/blog/${post.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <h3>{post.title}</h3>
+                </Link>
                 <p>{post.content.substring(0, 100)}...</p>
                 <Link href={`/blog/${post.id}`} className="read-more">Read Article →</Link>
               </div>
