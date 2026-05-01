@@ -43,6 +43,15 @@ export async function openDb() {
       message TEXT,
       date TEXT
     );
+
+    CREATE TABLE IF NOT EXISTS comments (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      post_id INTEGER,
+      name TEXT,
+      content TEXT,
+      date TEXT,
+      FOREIGN KEY(post_id) REFERENCES posts(id) ON DELETE CASCADE
+    );
   `);
 
   // Seed default settings if empty

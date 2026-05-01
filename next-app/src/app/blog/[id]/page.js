@@ -1,11 +1,13 @@
 import { openDb } from '@/lib/db';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import CommentsSection from './CommentsSection';
 
 export default async function BlogPost({ params }) {
   const { id } = await params;
   const db = await openDb();
   const post = await db.get('SELECT * FROM posts WHERE id = ?', [id]);
+  const comments = await db.all('SELECT * FROM comments WHERE post_id = ? ORDER BY id ASC', [id]);
 
   if (!post) {
     notFound();
@@ -40,6 +42,8 @@ export default async function BlogPost({ params }) {
 
       <div className="quill-content" style={{ fontSize: '1.1rem', lineHeight: 1.8, color: 'var(--text-secondary)' }} dangerouslySetInnerHTML={{ __html: post.content }}>
       </div>
+
+      <CommentsSection postId={id} initialComments={comments} />
     </article>
   );
 }
