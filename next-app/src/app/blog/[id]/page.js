@@ -38,10 +38,7 @@ export default async function BlogPost({ params }) {
         )}
       </div>
 
-      <div style={{ fontSize: '1.1rem', lineHeight: 1.8, color: 'var(--text-secondary)' }}>
-        {post.content.split('\n').map((paragraph, i) => (
-          <p key={i} style={{ marginBottom: '1.5rem' }}>{paragraph}</p>
-        ))}
+      <div className="quill-content" style={{ fontSize: '1.1rem', lineHeight: 1.8, color: 'var(--text-secondary)' }} dangerouslySetInnerHTML={{ __html: post.content }}>
       </div>
     </article>
   );

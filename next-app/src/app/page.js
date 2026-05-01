@@ -4,20 +4,23 @@ import { openDb } from '@/lib/db';
 export default async function Home() {
   const db = await openDb();
   const posts = await db.all('SELECT * FROM posts ORDER BY id DESC LIMIT 3');
+  
+  const settingsRaw = await db.all('SELECT * FROM settings WHERE key IN ("hero_title", "hero_subtitle")');
+  const settings = settingsRaw.reduce((acc, row) => ({ ...acc, [row.key]: row.value }), {});
 
   return (
     <>
       <section id="home" className="hero">
         <div className="hero-content">
-          <h1 className="hero-title">Crafting <span className="text-gradient">Digital</span> Experiences.</h1>
-          <p className="hero-subtitle">Hi, I'm Alex. I build modern, interactive, and beautiful web applications.</p>
+          <h1 className="hero-title">{settings.hero_title || 'Crafting Digital Experiences.'}</h1>
+          <p className="hero-subtitle">{settings.hero_subtitle || "Hi, I'm Alex. I build modern, interactive, and beautiful web applications."}</p>
           <div className="hero-actions">
             <Link href="/blog" className="btn btn-primary">Read My Blog</Link>
             <Link href="/contact" className="btn btn-secondary">Get In Touch</Link>
           </div>
         </div>
         <div className="hero-image-container">
-          <img src="/assets/profile.png" alt="Alex Carter" className="profile-image" />
+          <img src="/assets/profile.png" alt="Profile" className="profile-image" />
           <div className="glass-card floating-card-1">
             <span className="icon">✨</span> Creative UI
           </div>
@@ -51,7 +54,7 @@ export default async function Home() {
                 <Link href={`/blog/${post.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <h3>{post.title}</h3>
                 </Link>
-                <p>{post.content.substring(0, 100)}...</p>
+                <div dangerouslySetInnerHTML={{ __html: post.content.substring(0, 100) + '...' }} style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', flex: 1 }} />
                 <Link href={`/blog/${post.id}`} className="read-more">Read Article →</Link>
               </div>
             </article>
