@@ -1,10 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import dynamic from 'next/dynamic';
-import 'react-quill/dist/quill.snow.css';
-
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+import QuillEditor from '@/components/QuillEditor';
 
 export default function BlogEditor() {
   const router = useRouter();
@@ -55,7 +52,7 @@ export default function BlogEditor() {
           <input type="text" value={formData.imageUrl} onChange={e => setFormData({...formData, imageUrl: e.target.value})} style={{...inputStyle, flex: 1}} placeholder="Cover Image URL" />
         </div>
         <div style={{ background: '#fff', color: '#000', borderRadius: '8px', marginBottom: '1rem', overflow: 'hidden' }}>
-          <ReactQuill theme="snow" value={formData.content} onChange={val => setFormData({...formData, content: val})} style={{ height: '400px' }} />
+          <QuillEditor value={formData.content} onChange={val => setFormData({...formData, content: val})} style={{ height: '400px' }} />
         </div>
         <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%', marginTop: '3rem' }}>
           {loading ? 'Saving...' : 'Save Post'}

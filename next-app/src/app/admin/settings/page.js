@@ -1,9 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
-import 'react-quill/dist/quill.snow.css';
-
-const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+import QuillEditor from '@/components/QuillEditor';
 
 export default function AdminSettings() {
   const [loading, setLoading] = useState(false);
@@ -85,7 +82,7 @@ export default function AdminSettings() {
 
         <h3 style={{ margin: '2rem 0 1rem', color: 'var(--accent-1)' }}>About Page Content</h3>
         <div style={{ background: '#fff', color: '#000', borderRadius: '8px', marginBottom: '1rem', overflow: 'hidden' }}>
-          <ReactQuill theme="snow" value={settings.about_content} onChange={val => setSettings({...settings, about_content: val})} style={{ height: '300px' }} />
+          <QuillEditor value={settings.about_content} onChange={val => setSettings({...settings, about_content: val})} style={{ height: '300px' }} />
         </div>
 
         <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%', marginTop: '4rem' }}>
