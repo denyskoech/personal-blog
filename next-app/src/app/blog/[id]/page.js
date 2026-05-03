@@ -43,6 +43,19 @@ export default async function BlogPost({ params }) {
       <div className="quill-content" style={{ fontSize: '1.1rem', lineHeight: 1.8, color: 'var(--text-secondary)' }} dangerouslySetInnerHTML={{ __html: post.content }}>
       </div>
 
+      <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <strong style={{ color: 'var(--text-primary)' }}>Share this post:</strong>
+        <a href={`https://twitter.com/intent/tweet?text=Check out this post: ${encodeURIComponent(post.title)}&url=http://localhost:3000/blog/${id}`} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ padding: '0.4rem 0.8rem', textDecoration: 'none' }}>
+          𝕏 Twitter
+        </a>
+        <a href={`https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:3000/blog/${id}`} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ padding: '0.4rem 0.8rem', textDecoration: 'none' }}>
+          💼 LinkedIn
+        </a>
+        <a href={`https://www.facebook.com/sharer/sharer.php?u=http://localhost:3000/blog/${id}`} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ padding: '0.4rem 0.8rem', textDecoration: 'none' }}>
+          📘 Facebook
+        </a>
+      </div>
+
       <CommentsSection postId={id} initialComments={comments} />
     </article>
   );

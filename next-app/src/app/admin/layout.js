@@ -10,6 +10,7 @@ export default function AdminLayout({ children }) {
     { name: 'Blog Posts', path: '/admin/blog' },
     { name: 'Site Settings', path: '/admin/settings' },
     { name: 'Social Links', path: '/admin/social' },
+    { name: 'Comments', path: '/admin/comments' },
     { name: 'Messages', path: '/admin/messages' },
   ];
 

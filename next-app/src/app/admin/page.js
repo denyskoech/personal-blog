@@ -13,6 +13,7 @@ export default function AdminDashboard() {
         <DashboardCard title="Blog Posts" desc="Manage your articles" link="/admin/blog" icon="📝" />
         <DashboardCard title="Site Settings" desc="Change title, colors, and about content" link="/admin/settings" icon="⚙️" />
         <DashboardCard title="Social Links" desc="Manage social media icons" link="/admin/social" icon="🌐" />
+        <DashboardCard title="Comments" desc="Moderate and reply to blog comments" link="/admin/comments" icon="💬" />
         <DashboardCard title="Messages" desc="View contact form submissions" link="/admin/messages" icon="✉️" />
       </div>
     </div>
