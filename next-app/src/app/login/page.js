@@ -25,11 +25,11 @@ export default function Login() {
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh', marginTop: '4rem' }}>
-      <form onSubmit={handleLogin} style={{ background: 'var(--bg-secondary)', padding: '3rem', borderRadius: '16px', border: '1px solid var(--glass-border)', width: '100%', maxWidth: '400px', textAlign: 'center' }}>
-        <h2 style={{ marginBottom: '1rem' }}>Admin <span className="text-gradient">Login</span></h2>
-        <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>Enter the master password to continue</p>
+      <form onSubmit={handleLogin} style={{ background: 'var(--eb-white)', padding: '3rem', borderRadius: 'var(--eb-radius-md)', border: '1px solid var(--eb-border)', width: '100%', maxWidth: '400px', textAlign: 'center' }}>
+        <h2 className="eb-section-h" style={{ marginBottom: '1rem' }}>Admin <span style={{ color: 'var(--eb-light-brown)' }}>Login</span></h2>
+        <p className="eb-body" style={{ marginBottom: '2rem' }}>Enter the master password to continue</p>
         
-        {error && <p style={{ color: '#ef4444', marginBottom: '1rem' }}>{error}</p>}
+        {error && <p className="eb-micro" style={{ color: 'var(--eb-success)', marginBottom: '1rem' }}>{error}</p>}
         
         <input 
           type="password" 
@@ -37,10 +37,10 @@ export default function Login() {
           onChange={e => setPassword(e.target.value)} 
           placeholder="Password (admin123)" 
           required 
-          style={{ width: '100%', padding: '0.75rem 1rem', marginBottom: '1.5rem', borderRadius: '8px', border: '1px solid var(--glass-border)', background: 'var(--glass-bg)', color: 'white', outline: 'none' }} 
+          style={{ width: '100%', padding: '1rem', marginBottom: '1.5rem', borderRadius: 'var(--eb-radius-sm)', border: '1px solid var(--eb-border)', background: 'var(--eb-white)', color: 'var(--eb-fg1)', outline: 'none', fontFamily: 'var(--eb-font-mono)' }} 
         />
         
-        <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '0.75rem' }}>Login</button>
+        <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '1rem' }}>Login</button>
       </form>
     </div>
   );

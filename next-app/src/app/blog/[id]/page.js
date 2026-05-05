@@ -14,33 +14,33 @@ export default async function BlogPost({ params }) {
   }
 
   return (
-    <article style={{ padding: '8rem 5% 5rem', maxWidth: '800px', margin: '0 auto', minHeight: '80vh' }}>
-      <Link href="/blog" style={{ color: 'var(--accent-1)', textDecoration: 'none', display: 'inline-block', marginBottom: '2rem' }}>
+    <article style={{ maxWidth: '800px', margin: '0 auto', minHeight: '80vh', paddingBottom: '5rem' }}>
+      <Link href="/blog" className="eb-nav" style={{ color: 'var(--eb-fg2)', textDecoration: 'none', display: 'inline-block', marginBottom: '2rem' }}>
         ← Back to Blog
       </Link>
       
       <div style={{ marginBottom: '2rem' }}>
-        <div className="blog-meta" style={{ display: 'flex', gap: '1.5rem', marginBottom: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ color: 'var(--text-secondary)' }}>By</span>
-            <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>Alex Carter</span>
+            <span className="eb-body">By</span>
+            <span className="eb-step" style={{ color: 'var(--eb-fg1)' }}>Alex Carter</span>
           </div>
-          <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--text-secondary)' }}></div>
-          <span className="tag">{post.tag || 'General'}</span>
-          <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--text-secondary)' }}></div>
-          <span className="date">{post.date}</span>
-          <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--text-secondary)' }}></div>
-          <span style={{ color: 'var(--text-secondary)' }}>{Math.max(1, Math.ceil(post.content.split(' ').length / 200))} min read</span>
+          <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--eb-border)' }}></div>
+          <span className="eb-tag">{post.tag || 'General'}</span>
+          <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--eb-border)' }}></div>
+          <span className="eb-micro">{post.date}</span>
+          <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--eb-border)' }}></div>
+          <span className="eb-micro">{Math.max(1, Math.ceil(post.content.split(' ').length / 200))} min read</span>
         </div>
-        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '3rem', fontWeight: 800, marginBottom: '2rem', lineHeight: 1.2 }}>
+        <h1 className="eb-section-h" style={{ marginBottom: '2rem' }}>
           {post.title}
         </h1>
         {post.imageUrl && (
-          <img src={post.imageUrl} alt={post.title} style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: '16px', border: '1px solid var(--glass-border)' }} />
+          <img src={post.imageUrl} alt={post.title} style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: 'var(--eb-radius-lg)', border: '1px solid var(--eb-border)' }} />
         )}
       </div>
 
-      <div className="quill-content" style={{ fontSize: '1.1rem', lineHeight: 1.8, color: 'var(--text-secondary)' }} dangerouslySetInnerHTML={{ __html: post.content }}>
+      <div className="quill-content eb-body" dangerouslySetInnerHTML={{ __html: post.content }}>
       </div>
 
       <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', gap: '1rem' }}>
