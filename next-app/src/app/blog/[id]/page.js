@@ -23,7 +23,7 @@ export default async function BlogPost({ params }) {
         <div style={{ display: 'flex', gap: '1.5rem', marginBottom: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <span className="eb-body">By</span>
-            <span className="eb-step" style={{ color: 'var(--eb-fg1)' }}>Alex Carter</span>
+            <span className="eb-step" style={{ color: 'var(--eb-fg1)' }}>Dennis Koech</span>
           </div>
           <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--eb-border)' }}></div>
           <span className="eb-tag">{post.tag || 'General'}</span>

@@ -23,7 +23,7 @@ export default function AdminMessages() {
             </div>
             <p style={{ whiteSpace: 'pre-wrap', marginBottom: '1.5rem' }}>{msg.message}</p>
             <div style={{ textAlign: 'right' }}>
-              <a href={`mailto:${msg.email}?subject=Reply to your message on Alex Carter Blog&body=Hi ${msg.name},%0D%0A%0D%0AReplying to your message: "${msg.message.substring(0, 50)}..."%0D%0A%0D%0A`} className="btn btn-secondary" style={{ textDecoration: 'none', padding: '0.4rem 0.8rem', fontSize: '0.9rem' }}>
+              <a href={`mailto:${msg.email}?subject=Reply to your message on Dennis Koech Blog&body=Hi ${msg.name},%0D%0A%0D%0AReplying to your message: "${msg.message.substring(0, 50)}..."%0D%0A%0D%0A`} className="btn btn-secondary" style={{ textDecoration: 'none', padding: '0.4rem 0.8rem', fontSize: '0.9rem' }}>
                 Reply via Email ✉️
               </a>
             </div>

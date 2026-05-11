@@ -28,7 +28,7 @@ export default async function RootLayout({ children }) {
         <div id="app">
           <nav className="navbar">
             <div className="logo">
-              <Link href="/" style={{textDecoration: 'none', color: 'inherit'}}>{settings.site_title?.split(' ')[0] || 'AC.'}</Link>
+              <Link href="/" style={{textDecoration: 'none', color: 'inherit'}}>{settings.site_title?.split(' ')[0] || 'DK.'}</Link>
             </div>
             <ul className="nav-links eb-nav">
               <li><Link href="/">Home</Link></li>
@@ -45,7 +45,7 @@ export default async function RootLayout({ children }) {
           
           <footer className="eb-micro">
             <div className="footer-content" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-              <div className="logo">{settings.site_title?.split(' ')[0] || 'AC.'}</div>
+              <div className="logo">{settings.site_title?.split(' ')[0] || 'DK.'}</div>
               <div style={{ display: 'flex', gap: '1rem' }}>
                 {socialLinks.map(link => (
                   <a key={link.id} href={link.url} target="_blank" rel="noreferrer" style={{ color: 'var(--eb-fg2)', textDecoration: 'none', fontSize: '1.2rem' }}>
@@ -53,7 +53,7 @@ export default async function RootLayout({ children }) {
                   </a>
                 ))}
               </div>
-              <p>&copy; {new Date().getFullYear()} {settings.site_title?.split('|')[0]?.trim() || 'Alex Carter'}. All rights reserved.</p>
+              <p>&copy; {new Date().getFullYear()} {settings.site_title?.split('|')[0]?.trim() || 'Dennis Koech'}. All rights reserved.</p>
             </div>
           </footer>
         </div>

@@ -14,7 +14,7 @@ export default async function Home() {
         <div className="hero-content">
           <h1 className="eb-hero">{settings.hero_title || 'Crafting Digital Experiences.'}</h1>
           <p className="eb-body" style={{ marginTop: '1.5rem', marginBottom: '2.5rem', maxWidth: '80%' }}>
-            {settings.hero_subtitle || "Hi, I'm Alex. I build modern, interactive, and beautiful web applications."}
+            {settings.hero_subtitle || "Hi, I'm Dennis. I build modern, interactive, and beautiful web applications."}
           </p>
           <div className="hero-actions">
             <Link href="/blog" className="btn btn-primary">Read My Blog</Link>

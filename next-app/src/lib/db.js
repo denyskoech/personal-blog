@@ -59,9 +59,9 @@ export async function openDb() {
   if (settingsCount.count === 0) {
     await db.exec(`
       INSERT INTO settings (key, value) VALUES
-      ('site_title', 'Alex Carter | Personal Blog'),
+      ('site_title', 'Dennis Koech | Personal Blog'),
       ('hero_title', 'Crafting Digital Experiences.'),
-      ('hero_subtitle', 'Hi, I''m Alex. I build modern, interactive, and beautiful web applications.'),
+      ('hero_subtitle', 'Hi, I''m Dennis. I build modern, interactive, and beautiful web applications.'),
       ('about_content', 'I am a passionate software developer and UI/UX designer dedicated to crafting beautiful, functional, and user-centered digital experiences.<br/><br/>My journey started when I built my first website back in college. Since then, I''ve had the privilege of working with startups, agencies, and large corporations to build software that scales and delights users.<br/><br/>When I''m not coding, you can find me exploring the outdoors, reading sci-fi novels, or experimenting with new design trends.'),
       ('color_bg_main', '#0a0a0f'),
       ('color_bg_secondary', '#12121a'),

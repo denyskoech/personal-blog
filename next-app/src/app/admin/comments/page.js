@@ -17,7 +17,7 @@ export default function AdminComments() {
     const res = await fetch(`/api/blog/${postId}/comments`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: 'Alex Carter (Author)', content: replyContent })
+      body: JSON.stringify({ name: 'Dennis Koech (Author)', content: replyContent })
     });
     
     if (res.ok) {
