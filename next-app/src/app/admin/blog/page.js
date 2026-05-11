@@ -22,40 +22,40 @@ export default function AdminBlogList() {
     }
   };
 
-  if (loading) return <p>Loading posts...</p>;
+  if (loading) return <p className="text-body">Loading posts...</p>;
 
   return (
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-        <h2>Manage <span className="text-gradient">Blog Posts</span></h2>
+        <h2 className="text-h2">Manage Blog Posts</h2>
         <Link href="/admin/blog/edit/new" className="btn btn-primary">Create New Post</Link>
       </div>
 
-      <div style={{ background: 'var(--bg-secondary)', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--glass-border)' }}>
+      <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
           <thead>
-            <tr style={{ background: 'rgba(255,255,255,0.05)' }}>
-              <th style={{ padding: '1rem', borderBottom: '1px solid var(--glass-border)' }}>Title</th>
-              <th style={{ padding: '1rem', borderBottom: '1px solid var(--glass-border)' }}>Date</th>
-              <th style={{ padding: '1rem', borderBottom: '1px solid var(--glass-border)' }}>Tag</th>
-              <th style={{ padding: '1rem', borderBottom: '1px solid var(--glass-border)', textAlign: 'right' }}>Actions</th>
+            <tr style={{ background: 'var(--bg-elevated)' }}>
+              <th className="text-small mono" style={{ padding: '1rem', borderBottom: '1px solid var(--border-subtle)' }}>Title</th>
+              <th className="text-small mono" style={{ padding: '1rem', borderBottom: '1px solid var(--border-subtle)' }}>Date</th>
+              <th className="text-small mono" style={{ padding: '1rem', borderBottom: '1px solid var(--border-subtle)' }}>Tag</th>
+              <th className="text-small mono" style={{ padding: '1rem', borderBottom: '1px solid var(--border-subtle)', textAlign: 'right' }}>Actions</th>
             </tr>
           </thead>
           <tbody>
             {posts.map(post => (
-              <tr key={post.id} style={{ borderBottom: '1px solid var(--glass-border)' }}>
-                <td style={{ padding: '1rem' }}>{post.title}</td>
-                <td style={{ padding: '1rem' }}>{post.date}</td>
+              <tr key={post.id} style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                <td className="text-body" style={{ padding: '1rem', color: 'var(--text-primary)' }}>{post.title}</td>
+                <td className="text-small" style={{ padding: '1rem' }}>{post.date}</td>
                 <td style={{ padding: '1rem' }}><span className="tag">{post.tag}</span></td>
                 <td style={{ padding: '1rem', textAlign: 'right' }}>
-                  <Link href={`/admin/blog/edit/${post.id}`} className="btn btn-secondary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem', marginRight: '0.5rem' }}>Edit</Link>
-                  <button onClick={() => handleDelete(post.id)} className="btn btn-secondary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.8rem', background: 'rgba(239, 68, 68, 0.2)', borderColor: 'rgba(239, 68, 68, 0.5)', color: '#ef4444' }}>Delete</button>
+                  <Link href={`/admin/blog/edit/${post.id}`} className="btn btn-secondary" style={{ marginRight: '0.5rem' }}>Edit</Link>
+                  <button onClick={() => handleDelete(post.id)} className="btn btn-secondary" style={{ color: 'var(--error)' }}>Delete</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        {posts.length === 0 && <p style={{ padding: '2rem', textAlign: 'center' }}>No posts found.</p>}
+        {posts.length === 0 && <p className="text-body" style={{ padding: '2rem', textAlign: 'center' }}>No posts found.</p>}
       </div>
     </div>
   );

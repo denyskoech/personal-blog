@@ -14,11 +14,11 @@ export default async function BlogPage({ searchParams }) {
   }
 
   return (
-    <section className="blog-section">
-      <div style={{ maxWidth: '800px', margin: '0 auto', minHeight: '80vh', paddingBottom: '4rem' }}>
+    <section className="section-padding">
+      <div style={{ maxWidth: '800px', margin: '0 auto', minHeight: '80vh' }}>
         <div style={{ marginBottom: '3rem' }}>
-          <h1 className="eb-hero-sector" style={{ marginBottom: '0.5rem' }}>The <span style={{ color: 'var(--eb-light-brown)' }}>Blog</span></h1>
-          <p className="eb-body">Insights, tutorials, and stories.</p>
+          <h1 className="text-h1" style={{ marginBottom: '0.5rem' }}>The Blog</h1>
+          <p className="text-body">Insights, tutorials, and stories.</p>
         </div>
 
         <div style={{ marginBottom: '3rem' }}>
@@ -28,33 +28,35 @@ export default async function BlogPage({ searchParams }) {
               name="q" 
               defaultValue={query} 
               placeholder="Search articles..." 
-              style={{ flex: 1, padding: '1rem 1.5rem', borderRadius: 'var(--eb-radius-sm)', border: '1px solid var(--eb-border)', background: 'var(--eb-white)', color: 'var(--eb-fg1)', outline: 'none' }}
+              style={{ flex: 1 }}
             />
             <button type="submit" className="btn btn-primary">Search</button>
           </form>
         </div>
         
         {posts.length === 0 ? (
-          <p style={{ color: 'var(--text-secondary)' }}>No articles found for "{query}".</p>
+          <p className="text-body">No articles found for "{query}".</p>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
           {posts.map((post) => (
-            <article key={post.id} style={{ display: 'flex', gap: '2rem', padding: '1.5rem', background: 'var(--eb-white)', border: '1px solid var(--eb-border)', borderRadius: 'var(--eb-radius-md)', alignItems: 'center' }}>
+            <article key={post.id} className="card" style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
               {post.imageUrl && (
-                <div style={{ flex: '0 0 200px', height: '150px', borderRadius: 'var(--eb-radius-sm)', overflow: 'hidden' }}>
-                  <img src={post.imageUrl} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div style={{ flex: '0 0 200px', height: '150px', borderRadius: 'var(--radius-sm)', overflow: 'hidden', background: 'var(--bg-elevated)' }}>
+                  <img src={post.imageUrl} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
                 </div>
               )}
               <div style={{ flex: 1 }}>
-                <div style={{ display: 'flex', gap: '1rem', marginBottom: '0.5rem', alignItems: 'center' }}>
-                  <span className="eb-tag">{post.tag || 'General'}</span>
-                  <span className="eb-micro">{post.date}</span>
+                <div style={{ display: 'flex', gap: '1rem', marginBottom: '0.75rem', alignItems: 'center' }}>
+                  <span className="tag">{post.tag || 'General'}</span>
+                  <span className="text-micro">{post.date}</span>
                 </div>
-                <Link href={`/blog/${post.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <h3 className="eb-card-title" style={{ marginBottom: '0.75rem', fontSize: '1.5rem' }}>{post.title}</h3>
+                <Link href={`/blog/${post.id}`}>
+                  <h3 className="text-h3" style={{ marginBottom: '0.75rem', color: 'var(--text-primary)' }}>{post.title}</h3>
                 </Link>
-                <div className="eb-body" dangerouslySetInnerHTML={{ __html: post.content.substring(0, 150) + '...' }} style={{ marginBottom: '1rem' }} />
-                <Link href={`/blog/${post.id}`} className="eb-nav" style={{ textDecoration: 'none', color: 'var(--eb-fg1)', textDecorationLine: 'underline' }}>Read Article</Link>
+                <div className="text-body" dangerouslySetInnerHTML={{ __html: post.content.substring(0, 150) + '...' }} style={{ marginBottom: '1rem', fontSize: '0.875rem' }} />
+                <Link href={`/blog/${post.id}`} className="text-small mono" style={{ color: 'var(--accent)', fontWeight: 500 }}>
+                  READ ARTICLE
+                </Link>
               </div>
             </article>
           ))}

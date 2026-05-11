@@ -39,15 +39,15 @@ export default function AdminSettings() {
     }
   };
 
-  const inputStyle = { width: '100%', padding: '0.75rem 1rem', marginBottom: '1rem', borderRadius: '8px', border: '1px solid var(--glass-border)', background: 'var(--glass-bg)', color: 'white', fontFamily: 'inherit', outline: 'none' };
+  const inputStyle = { width: '100%', padding: '0.75rem 1rem', marginBottom: '1rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)', background: 'var(--bg-main)', color: 'var(--text-primary)', fontFamily: 'inherit', outline: 'none' };
   const labelStyle = { display: 'block', marginBottom: '0.5rem', fontWeight: 600, color: 'var(--text-secondary)' };
 
   return (
     <div>
-      <h2>Site <span className="text-gradient">Settings</span></h2>
-      <form onSubmit={handleSubmit} style={{ marginTop: '2rem', background: 'var(--bg-secondary)', padding: '2rem', borderRadius: '16px', border: '1px solid var(--glass-border)' }}>
+      <h2 className="text-h2">Site Settings</h2>
+      <form onSubmit={handleSubmit} className="card" style={{ marginTop: '2rem' }}>
         
-        <h3 style={{ marginBottom: '1rem', color: 'var(--accent-1)' }}>Global Info</h3>
+        <h3 className="text-h3" style={{ marginBottom: '1rem' }}>Global Info</h3>
         <label style={labelStyle}>Site Title (also changes Favicon title)</label>
         <input type="text" value={settings.site_title} onChange={e => setSettings({...settings, site_title: e.target.value})} style={inputStyle} />
         
@@ -60,7 +60,7 @@ export default function AdminSettings() {
         <label style={labelStyle}>Hero Subtitle</label>
         <input type="text" value={settings.hero_subtitle} onChange={e => setSettings({...settings, hero_subtitle: e.target.value})} style={inputStyle} />
 
-        <h3 style={{ margin: '2rem 0 1rem', color: 'var(--accent-1)' }}>Colors</h3>
+        <h3 className="text-h3" style={{ margin: '2rem 0 1rem' }}>Colors (Legacy, not used in Dev Minimal)</h3>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
           <div>
             <label style={labelStyle}>Background Main</label>
@@ -80,8 +80,8 @@ export default function AdminSettings() {
           </div>
         </div>
 
-        <h3 style={{ margin: '2rem 0 1rem', color: 'var(--accent-1)' }}>About Page Content</h3>
-        <div style={{ background: '#fff', color: '#000', borderRadius: '8px', marginBottom: '1rem', overflow: 'hidden' }}>
+        <h3 className="text-h3" style={{ margin: '2rem 0 1rem' }}>About Page Content</h3>
+        <div style={{ background: '#fff', color: '#000', borderRadius: 'var(--radius-sm)', marginBottom: '1rem', overflow: 'hidden' }}>
           <QuillEditor value={settings.about_content} onChange={val => setSettings({...settings, about_content: val})} style={{ height: '300px' }} />
         </div>
 

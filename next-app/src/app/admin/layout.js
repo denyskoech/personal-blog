@@ -15,21 +15,22 @@ export default function AdminLayout({ children }) {
   ];
 
   return (
-    <div style={{ display: 'flex', minHeight: '80vh', marginTop: '4rem' }}>
-      <aside style={{ width: '250px', background: 'var(--bg-secondary)', borderRight: '1px solid var(--glass-border)', padding: '2rem 1rem' }}>
-        <h3 style={{ marginBottom: '2rem', paddingLeft: '1rem', color: 'var(--text-primary)' }}>Admin Panel</h3>
+    <div style={{ display: 'flex', minHeight: '80vh', borderTop: '1px solid var(--border-subtle)' }}>
+      <aside style={{ width: '250px', background: 'var(--bg-secondary)', borderRight: '1px solid var(--border-subtle)', padding: '2rem 1rem' }}>
+        <h3 className="text-h3 mono" style={{ marginBottom: '2rem', paddingLeft: '1rem', color: 'var(--text-primary)' }}>Admin Panel</h3>
         <ul style={{ listStyle: 'none', padding: 0 }}>
           {navItems.map(item => (
             <li key={item.path} style={{ marginBottom: '0.5rem' }}>
               <Link 
                 href={item.path}
+                className="text-small mono"
                 style={{
                   display: 'block',
                   padding: '0.75rem 1rem',
-                  borderRadius: '8px',
+                  borderRadius: 'var(--radius-sm)',
                   textDecoration: 'none',
-                  color: pathname === item.path ? 'var(--accent-1)' : 'var(--text-secondary)',
-                  background: pathname === item.path ? 'rgba(99, 102, 241, 0.1)' : 'transparent',
+                  color: pathname === item.path ? 'var(--text-inverse)' : 'var(--text-secondary)',
+                  background: pathname === item.path ? 'var(--text-primary)' : 'transparent',
                   fontWeight: pathname === item.path ? 600 : 400
                 }}
               >
@@ -39,7 +40,7 @@ export default function AdminLayout({ children }) {
           ))}
         </ul>
       </aside>
-      <main style={{ flex: 1, padding: '2rem 5%' }}>
+      <main style={{ flex: 1, padding: '3rem 5%' }}>
         {children}
       </main>
     </div>

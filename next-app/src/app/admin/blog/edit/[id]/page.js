@@ -40,21 +40,21 @@ export default function BlogEditor() {
     }
   };
 
-  const inputStyle = { width: '100%', padding: '0.75rem 1rem', marginBottom: '1rem', borderRadius: '8px', border: '1px solid var(--glass-border)', background: 'var(--glass-bg)', color: 'white', fontFamily: 'inherit', outline: 'none' };
+  const inputStyle = { width: '100%', padding: '0.75rem 1rem', marginBottom: '1rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)', background: 'var(--bg-main)', color: 'var(--text-primary)', fontFamily: 'inherit', outline: 'none' };
 
   return (
     <div>
-      <h2>{isNew ? 'Create' : 'Edit'} <span className="text-gradient">Post</span></h2>
-      <form onSubmit={handleSubmit} style={{ marginTop: '2rem', background: 'var(--bg-secondary)', padding: '2rem', borderRadius: '16px', border: '1px solid var(--glass-border)' }}>
+      <h2 className="text-h2">{isNew ? 'Create' : 'Edit'} Post</h2>
+      <form onSubmit={handleSubmit} className="card" style={{ marginTop: '2rem' }}>
         <input type="text" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} required style={inputStyle} placeholder="Post Title" />
         <div style={{ display: 'flex', gap: '1rem' }}>
           <input type="text" value={formData.tag} onChange={e => setFormData({...formData, tag: e.target.value})} style={{...inputStyle, flex: 1}} placeholder="Tag (e.g. Design)" />
           <input type="text" value={formData.imageUrl} onChange={e => setFormData({...formData, imageUrl: e.target.value})} style={{...inputStyle, flex: 1}} placeholder="Cover Image URL" />
         </div>
-        <div style={{ background: '#fff', color: '#000', borderRadius: '8px', marginBottom: '1rem', overflow: 'hidden' }}>
+        <div style={{ background: '#fff', color: '#000', borderRadius: 'var(--radius-sm)', marginBottom: '1rem', overflow: 'hidden' }}>
           <QuillEditor value={formData.content} onChange={val => setFormData({...formData, content: val})} style={{ height: '400px' }} />
         </div>
-        <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%', marginTop: '3rem' }}>
+        <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%', marginTop: '3rem', padding: '1rem' }}>
           {loading ? 'Saving...' : 'Save Post'}
         </button>
       </form>

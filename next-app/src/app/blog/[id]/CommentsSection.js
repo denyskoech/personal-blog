@@ -27,26 +27,26 @@ export default function CommentsSection({ postId, initialComments }) {
     setLoading(false);
   };
 
-  const inputStyle = { width: '100%', padding: '0.75rem 1rem', marginBottom: '1rem', borderRadius: '8px', border: '1px solid var(--glass-border)', background: 'var(--glass-bg)', color: 'white', outline: 'none' };
+  const inputStyle = { width: '100%', padding: '0.75rem 1rem', marginBottom: '1rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)', background: 'var(--bg-main)', color: 'var(--text-primary)', outline: 'none' };
 
   return (
-    <div style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid var(--glass-border)' }}>
-      <h3 style={{ marginBottom: '2rem', fontSize: '1.8rem' }}>Comments ({comments.length})</h3>
+    <div style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid var(--border-subtle)' }}>
+      <h3 className="text-h2" style={{ marginBottom: '2rem' }}>Comments ({comments.length})</h3>
       
       <div style={{ marginBottom: '3rem' }}>
         {comments.map(c => (
-          <div key={c.id} style={{ background: 'var(--bg-secondary)', padding: '1.5rem', borderRadius: '12px', marginBottom: '1rem', border: '1px solid var(--glass-border)' }}>
+          <div key={c.id} className="card" style={{ marginBottom: '1rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-              <strong style={{ color: 'var(--accent-1)' }}>{c.name}</strong>
-              <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{c.date}</span>
+              <strong style={{ color: 'var(--text-primary)' }}>{c.name}</strong>
+              <span className="text-small">{c.date}</span>
             </div>
-            <p style={{ color: 'var(--text-primary)', lineHeight: 1.6 }}>{c.content}</p>
+            <p className="text-body">{c.content}</p>
           </div>
         ))}
       </div>
 
-      <form onSubmit={handleSubmit} style={{ background: 'var(--bg-secondary)', padding: '2rem', borderRadius: '12px', border: '1px solid var(--glass-border)' }}>
-        <h4 style={{ marginBottom: '1.5rem' }}>Leave a comment</h4>
+      <form onSubmit={handleSubmit} className="card">
+        <h4 className="text-h3" style={{ marginBottom: '1.5rem' }}>Leave a comment</h4>
         <input 
           type="text" 
           placeholder="Name (optional)" 

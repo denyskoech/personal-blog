@@ -24,36 +24,34 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className="eb-page">
-        <div id="app">
+      <body>
+        <div className="container">
           <nav className="navbar">
-            <div className="logo">
-              <Link href="/" style={{textDecoration: 'none', color: 'inherit'}}>{settings.site_title?.split(' ')[0] || 'DK.'}</Link>
+            <div style={{ fontWeight: 700, fontSize: '1.25rem' }}>
+              <Link href="/">{settings.site_title?.split(' ')[0] || 'DK.'}</Link>
             </div>
-            <ul className="nav-links eb-nav">
+            <ul className="nav-links">
               <li><Link href="/">Home</Link></li>
               <li><Link href="/about">About</Link></li>
+              <li><Link href="/projects">Projects</Link></li>
               <li><Link href="/blog">Blog</Link></li>
               <li><Link href="/contact">Contact</Link></li>
               <li><Link href="/admin">Admin</Link></li>
             </ul>
           </nav>
 
-          <main className="eb-viewport">
+          <main style={{ minHeight: 'calc(100vh - 200px)' }}>
             {children}
           </main>
           
-          <footer className="eb-micro">
-            <div className="footer-content" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-              <div className="logo">{settings.site_title?.split(' ')[0] || 'DK.'}</div>
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                {socialLinks.map(link => (
-                  <a key={link.id} href={link.url} target="_blank" rel="noreferrer" style={{ color: 'var(--eb-fg2)', textDecoration: 'none', fontSize: '1.2rem' }}>
-                    {link.icon}
-                  </a>
-                ))}
-              </div>
-              <p>&copy; {new Date().getFullYear()} {settings.site_title?.split('|')[0]?.trim() || 'Dennis Koech'}. All rights reserved.</p>
+          <footer>
+            <div>&copy; {new Date().getFullYear()} {settings.site_title?.split('|')[0]?.trim() || 'Dennis Koech'}. All rights reserved.</div>
+            <div style={{ display: 'flex', gap: '1.5rem' }}>
+              {socialLinks.map(link => (
+                <a key={link.id} href={link.url} target="_blank" rel="noreferrer" className="text-secondary hover:text-primary" style={{ fontSize: '1.25rem' }}>
+                  {link.icon}
+                </a>
+              ))}
             </div>
           </footer>
         </div>

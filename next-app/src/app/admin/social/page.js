@@ -28,28 +28,28 @@ export default function AdminSocial() {
     setLinks(links.filter(l => l.id !== id));
   };
 
-  const inputStyle = { width: '100%', padding: '0.75rem 1rem', borderRadius: '8px', border: '1px solid var(--glass-border)', background: 'var(--glass-bg)', color: 'white', outline: 'none' };
+  const inputStyle = { width: '100%', padding: '0.75rem 1rem', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)', background: 'var(--bg-main)', color: 'var(--text-primary)', outline: 'none' };
 
   return (
     <div>
-      <h2>Manage <span className="text-gradient">Social Links</span></h2>
+      <h2 className="text-h2">Manage Social Links</h2>
       
-      <form onSubmit={handleAdd} style={{ display: 'flex', gap: '1rem', marginTop: '2rem', background: 'var(--bg-secondary)', padding: '1.5rem', borderRadius: '16px' }}>
+      <form onSubmit={handleAdd} className="card" style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
         <input type="text" value={formData.platform} onChange={e => setFormData({...formData, platform: e.target.value})} placeholder="Platform (e.g. Twitter)" required style={inputStyle} />
         <input type="url" value={formData.url} onChange={e => setFormData({...formData, url: e.target.value})} placeholder="URL" required style={inputStyle} />
         <input type="text" value={formData.icon} onChange={e => setFormData({...formData, icon: e.target.value})} placeholder="Icon (emoji or text)" required style={inputStyle} />
         <button type="submit" className="btn btn-primary" style={{ whiteSpace: 'nowrap' }}>Add Link</button>
       </form>
 
-      <div style={{ marginTop: '2rem', background: 'var(--bg-secondary)', borderRadius: '16px', padding: '1rem' }}>
+      <div className="card" style={{ marginTop: '2rem', padding: '1rem' }}>
         {links.map(link => (
-          <div key={link.id} style={{ display: 'flex', justifyContent: 'space-between', padding: '1rem', borderBottom: '1px solid var(--glass-border)' }}>
+          <div key={link.id} style={{ display: 'flex', justifyContent: 'space-between', padding: '1rem', borderBottom: '1px solid var(--border-subtle)' }}>
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
               <span style={{ fontSize: '1.5rem' }}>{link.icon}</span>
-              <strong>{link.platform}</strong>
-              <a href={link.url} target="_blank" style={{ color: 'var(--accent-1)' }}>{link.url}</a>
+              <strong style={{ color: 'var(--text-primary)' }}>{link.platform}</strong>
+              <a href={link.url} target="_blank" className="text-small" style={{ color: 'var(--text-secondary)' }}>{link.url}</a>
             </div>
-            <button onClick={() => handleDelete(link.id)} className="btn btn-secondary" style={{ padding: '0.4rem 0.8rem', background: 'rgba(239, 68, 68, 0.2)', color: '#ef4444', borderColor: 'transparent' }}>Remove</button>
+            <button onClick={() => handleDelete(link.id)} className="btn btn-secondary" style={{ color: 'var(--error)' }}>Remove</button>
           </div>
         ))}
       </div>
