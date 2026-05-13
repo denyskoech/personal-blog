@@ -12,7 +12,7 @@ export default async function Home() {
     <>
       <section id="home" className="section-padding" style={{ display: 'flex', alignItems: 'center', gap: '4rem' }}>
         <div style={{ flex: 1 }}>
-          <h1 className="text-hero" style={{ marginBottom: '1.5rem' }}>
+          <h1 className="text-hero text-gradient-wow" style={{ marginBottom: '1.5rem', paddingBottom: '0.5rem' }}>
             {settings.hero_title || 'Crafting Digital Experiences.'}
           </h1>
           <p className="text-body" style={{ fontSize: '1.25rem', marginBottom: '2.5rem', maxWidth: '90%' }}>

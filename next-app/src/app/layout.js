@@ -1,6 +1,7 @@
 import './globals.css';
 import Link from 'next/link';
 import { openDb } from '@/lib/db';
+import SocialIcon from '@/components/SocialIcon';
 
 export async function generateMetadata() {
   const db = await openDb();
@@ -37,7 +38,6 @@ export default async function RootLayout({ children }) {
               <li><Link href="/projects">Projects</Link></li>
               <li><Link href="/blog">Blog</Link></li>
               <li><Link href="/contact">Contact</Link></li>
-              <li><Link href="/admin">Admin</Link></li>
             </ul>
           </nav>
 
@@ -50,7 +50,7 @@ export default async function RootLayout({ children }) {
             <div style={{ display: 'flex', gap: '1.5rem' }}>
               {socialLinks.map(link => (
                 <a key={link.id} href={link.url} target="_blank" rel="noreferrer" className="text-secondary hover:text-primary" style={{ fontSize: '1.25rem' }}>
-                  {link.icon}
+                  <SocialIcon platform={link.platform} />
                 </a>
               ))}
             </div>
