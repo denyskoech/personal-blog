@@ -2,7 +2,8 @@ import { openDb } from '@/lib/db';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import CommentsSection from './CommentsSection';
-import SocialIcon from '@/components/SocialIcon';
+import ShareButtons from '@/components/ShareButtons';
+import ImageWithFallback from '@/components/ImageWithFallback';
 
 export default async function BlogPost({ params }) {
   const { id } = await params;
@@ -41,8 +42,8 @@ export default async function BlogPost({ params }) {
         <h1 className="text-h1" style={{ marginBottom: '2rem', fontSize: '3rem', lineHeight: 1.2 }}>
           {post.title}
         </h1>
-        {post.imageUrl && (
-          <img src={post.imageUrl} alt={post.title} style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border-subtle)' }} />
+        {post.imageUrl?.trim() && (
+          <ImageWithFallback src={post.imageUrl} alt={post.title} style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border-subtle)' }} />
         )}
       </div>
 
@@ -52,24 +53,7 @@ export default async function BlogPost({ params }) {
       {/* Share Section */}
       <div style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid var(--border-subtle)', display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
         <strong className="text-small mono" style={{ color: 'var(--text-primary)' }}>SHARE THIS POST</strong>
-        <div style={{ display: 'flex', gap: '1rem' }}>
-          <a href={`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`} target="_blank" rel="noopener noreferrer" title="Share on X">
-            <SocialIcon platform="X" size="1.5rem" />
-          </a>
-          <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`} target="_blank" rel="noopener noreferrer" title="Share on LinkedIn">
-            <SocialIcon platform="LinkedIn" size="1.5rem" />
-          </a>
-          <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`} target="_blank" rel="noopener noreferrer" title="Share on Facebook">
-            <SocialIcon platform="Facebook" size="1.5rem" />
-          </a>
-          <button 
-            onClick={() => { navigator.clipboard.writeText(postUrl); alert('Link copied to clipboard!'); }} 
-            title="Copy Link"
-            style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
-          >
-            <SocialIcon platform="Link" size="1.5rem" />
-          </button>
-        </div>
+        <ShareButtons postUrl={postUrl} encodedTitle={encodedTitle} encodedUrl={encodedUrl} />
       </div>
 
       <CommentsSection postId={id} initialComments={comments} />

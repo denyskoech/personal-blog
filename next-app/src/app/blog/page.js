@@ -1,5 +1,6 @@
 import { openDb } from '@/lib/db';
 import Link from 'next/link';
+import ImageWithFallback from '@/components/ImageWithFallback';
 
 export default async function BlogPage({ searchParams }) {
   const resolvedSearchParams = await searchParams;
@@ -40,9 +41,9 @@ export default async function BlogPage({ searchParams }) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
           {posts.map((post) => (
             <article key={post.id} className="card" style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-              {post.imageUrl && (
+              {post.imageUrl?.trim() && (
                 <div style={{ flex: '0 0 200px', height: '150px', borderRadius: 'var(--radius-sm)', overflow: 'hidden', background: 'var(--bg-elevated)' }}>
-                  <img src={post.imageUrl} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
+                  <ImageWithFallback src={post.imageUrl} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
               )}
               <div style={{ flex: 1 }}>
@@ -53,7 +54,9 @@ export default async function BlogPage({ searchParams }) {
                 <Link href={`/blog/${post.id}`}>
                   <h3 className="text-h3" style={{ marginBottom: '0.75rem', color: 'var(--text-primary)' }}>{post.title}</h3>
                 </Link>
-                <div className="text-body" dangerouslySetInnerHTML={{ __html: post.content.substring(0, 150) + '...' }} style={{ marginBottom: '1rem', fontSize: '0.875rem' }} />
+                <div className="text-body" style={{ marginBottom: '1rem', fontSize: '0.875rem' }}>
+                  {post.content.replace(/<[^>]*>?/gm, '').substring(0, 150)}...
+                </div>
                 <Link href={`/blog/${post.id}`} className="text-small mono" style={{ color: 'var(--accent)', fontWeight: 500 }}>
                   READ ARTICLE
                 </Link>
